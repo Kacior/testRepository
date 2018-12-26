@@ -1,0 +1,6 @@
+package projekt1;
+
+public enum CourtType {
+    COMMON, SUPREME, CONSTITUTIONAL_TRIBUNAL, NATIONAL_APPEAL_CHAMBER;
+
+}
