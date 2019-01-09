@@ -6,8 +6,7 @@ import java.util.Objects;
 
 public class Regulation {
     private  String title;
-    private int number;
-    private int year;
+
     private List<Judgement> judgements = new LinkedList<>();
 
     public String getTitle() {
@@ -18,10 +17,8 @@ public class Regulation {
         judgements.add(judgement);
     }
 
-    public Regulation(String title, int number, int year) {
+    public Regulation(String title) {
         this.title = title;
-        this.number = number;
-        this.year = year;
     }
 
     public int regulationSize() {
@@ -33,9 +30,7 @@ public class Regulation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Regulation that = (Regulation) o;
-        return number == that.number &&
-                year == that.year &&
-                Objects.equals(title, that.title);
+        return Objects.equals(title, that.title);
     }
 
 }

@@ -3,8 +3,8 @@ package projekt1;
 import java.util.*;
 
 public class Judges {
-    Map<String, Judge> judges = new HashMap<>();
-    LinkedList<Judge> sorted=new LinkedList<>();
+    private Map<String, Judge> judges = new HashMap<>();
+    private LinkedList<Judge> sorted=new LinkedList<>();
     private boolean ifSorted = false;
 
     public void addJudge(Judge judge, Judgement judgement) {

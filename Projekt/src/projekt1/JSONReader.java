@@ -58,22 +58,13 @@ public class JSONReader {
                     for (int a = 0; a < regulations.size(); a++) {
                         JSONObject PartialRegulations = (JSONObject) regulations.get(a);
                         String regTitle = (String) PartialRegulations.get("journalTitle");
-                        Long regNumber = (Long) PartialRegulations.get("journalNo");
-                        Long regYear = (Long) PartialRegulations.get("journalYear");
-                        Regulation newReg = new Regulation(regTitle, toIntExact(regNumber), toIntExact(regYear));
+                        Regulation newReg = new Regulation(regTitle);
                         regList.addRegulation(newReg, newcase);
                     }
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (java.text.ParseException e) {
+        } catch (IOException|ParseException|java.text.ParseException e) {
             e.printStackTrace();
         }
-
     }
 }

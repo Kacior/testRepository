@@ -22,7 +22,7 @@ public String getCourtType(){
         return this.date;
     }
 
-    public void showContent() {
+     void showContent() {
         System.out.print(textContent);
     }
 
@@ -32,21 +32,6 @@ public String getCourtType(){
 
     public String signature() {
         return this.signature;
-    }
-
-    private String CourtTypeToRoman(String courtType) throws IllegalArgumentException {
-        switch (courtType) {
-            case "COMMON":
-                return "I";
-            case "SUPREME":
-                return "II";
-            case "CONSTITUTIONAL_TRIBUNAL":
-                return "III";
-            case "NATIONAL_APPEAL_CHAMBER":
-                return "IV";
-            default:
-                throw new IllegalArgumentException("Niepoprawny argument" + courtType);
-        }
     }
 
     public int judgesPerCase() {

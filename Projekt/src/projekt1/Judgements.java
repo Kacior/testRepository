@@ -5,29 +5,26 @@ import java.util.*;
 public class Judgements {
     private Map<String, Judgement> casesMap = new HashMap<>();
 
-    public void testMethod(){
-        System.out.println(casesMap.size());
-    }
     public void addJudgement(Judgement judgement) {
         casesMap.put(judgement.signature(), judgement);
     }
 
-    void printDateStatistics(){
+    void printDateStatistics() {
         List<Judgement> cases = new LinkedList<>(casesMap.values());
         int[] months = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        for(int i=0;i<cases.size();i++){
+        for (int i = 0; i < cases.size(); i++) {
             months[cases.get(i).getDate().getMonth()]++;
         }
-        for(int i=0;i<months.length;i++){
-            System.out.print("W miesiacu: "+i+1+" wydano tyle orzeczen: "+months[i]+"\n");
+        for (int i = 0; i < months.length; i++) {
+            System.out.print("W miesiacu: " + i + 1 + " wydano tyle orzeczen: " + months[i] + "\n");
         }
     }
 
-    void printCourtStatistics() throws IllegalArgumentException{
+    void printCourtStatistics() throws IllegalArgumentException {
         List<Judgement> cases = new LinkedList<>(casesMap.values());
-        int[] courtTypes = {0, 0, 0, 0};
-        for(int i=0;i<cases.size();i++){
-            switch(cases.get(i).getCourtType()){
+        int[] courtTypes = {0, 0, 0, 0, 0};
+        for (int i = 0; i < cases.size(); i++) {
+            switch (cases.get(i).getCourtType()) {
                 case "COMMON":
                     courtTypes[0]++;
                     break;
@@ -40,14 +37,18 @@ public class Judgements {
                 case "CONSTITUTIONAL_TRIBUNAL":
                     courtTypes[3]++;
                     break;
+                case "ADMINISTRATIVE":
+                    courtTypes[4]++;
+                    break;
                 default:
-                    throw new IllegalArgumentException("niepop arg "+cases.get(i).getCourtType());
+                    throw new IllegalArgumentException("niepop arg " + cases.get(i).getCourtType());
             }
         }
-        System.out.print("COMMON: "+courtTypes[0]+" CASES\n");
-        System.out.print("SUPREME: "+courtTypes[1]+" CASES\n");
-        System.out.print("NATIONAL_APPEAL_CHAMBER: "+courtTypes[2]+" CASES\n");
-        System.out.print("CONSTITUTIONAL_TRIBUNAL: "+courtTypes[3]+" CASES");
+        System.out.print("COMMON: " + courtTypes[0] + " CASES\n");
+        System.out.print("SUPREME: " + courtTypes[1] + " CASES\n");
+        System.out.print("NATIONAL_APPEAL_CHAMBER: " + courtTypes[2] + " CASES\n");
+        System.out.print("CONSTITUTIONAL_TRIBUNAL: " + courtTypes[3] + " CASES\n");
+        System.out.print("ADMINISTRATIVE: " + courtTypes[4] + " CASES");
     }
 
     void printStatistics() {
@@ -56,14 +57,12 @@ public class Judgements {
             System.out.println("Sprawa: " + cases.get(i).signature() + " Liczba sędziów: " + cases.get(i).judgesPerCase() + "\n");
         }
     }
-    public void showJudgement(String signature){
+
+    public void showJudgement(String signature) {
         casesMap.get(signature).showContent();
     }
-    public void showMultipleRubrum(String[] signatures){
-        for(int i=0;i<signatures.length;i++){
-            casesMap.get(signatures[i]).rubrum();
-            System.out.println("\n");
-        }
-    }
 
+    public void showRubrum(String signature) {
+        casesMap.get(signature).rubrum();
+    }
 }
